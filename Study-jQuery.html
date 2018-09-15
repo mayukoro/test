@@ -3,14 +3,29 @@
 <head>
     <meta charset="utf-8">
     <title>jQueryの練習</title>
+    <style>
+        .myStyle{
+            font-size:30px;
+            border:10px solid blue;
+        }
+    </style>
 </head>
 <body>
     <p>jQueryの練習</p>
-    <p><a href="http://google.com">Google</a></p>
-    <p><a href="http://yahoo.com">Yahoo</a></p>
+    <p><a href="http://google.com" data-sitename="Google">Google</a></p>
+    <p><a href="http://yahoo.com" data-sitename="Yahoo">Yahoo</a></p>
     <p><a href="http://dotinstall.com">Dotinstall</a></p>
+    <input type="text" value="山田太郎" id="name">
+    <select id="members" name="members">
+        <option>佐藤</option>
+        <option>鈴木</option>
+        <option>田中</option>
+    </select>
+    <button>Add!</button>
+    <input type="text" name="name" id="name">
+    <input type="text" id="greet" value="greet!">
 
-    <ul id-"main">
+    <ul id="main">
         <li>0</li>
         <li class="item">1</li>
         <li class="item">2</li>
@@ -27,6 +42,7 @@
     </ul>
     <script src="http:code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
+    
         $(function(){
             $('p').css('color','red');
         });
@@ -37,12 +53,44 @@
         //     $("#sub>li:eq(3)").css('color','red');
         // });
         $(function(){
-            $("#sub").children().css('color','red');
+            // $("#sub").children().css('color','red');
+            // $('a[href="http://google.com"]').css('background','green');
+            // $('p').css('color','pink');
+            // console.log($('p').css('color'));
+            // $('p').addClass('myStyle');
+            // console.log($('a').attr('href'));
+            console.log($('a').data('sitename'));
         });
         // $(function(){
         //     $(".item>eq(2)").css('color','blue');
         // });
-        $('a[href="http://google.com"]').css('background','green');
+        $(function(){
+            // $('p').text('just');
+            $('p').html('<a href="">click!</a>');
+            console.log($('input').val('Hey!'));
+
+            var li=$('<li>').text('add');
+            // $('ul>li:eq(2)').before(li);
+            $('ul').append(li);
+        });
+        $(function(){
+            $('#name')
+            .focus(function(){
+                $(this).css('background','red');
+            })
+            .blur(function(){
+                $(this).css('background','white');
+            });
+        });
+        $('button').click(function(){
+            var p=$('<p>').text('vanish').addClass('vanish');
+            $(this).before(p);
+        });
+        S('#greet').click(function(){
+
+        });
+        
+
     </script>
 </body>
 
